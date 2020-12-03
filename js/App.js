@@ -1,14 +1,16 @@
 import TodoInput from "./component/TodoInput.js";
 import TodoItem from "./component/TodoItem.js"
+import TodoList from "./component/TodoList.js";
 
 export default class App {
   constructor() {
     this.todoItems = [];
     this.todoId = 0;
 
+    this.todoList = new TodoList();
     new TodoInput({
-        addTodo: this.addTodo.bind(this),
-    })
+      addTodo: this.addTodo.bind(this),
+    });
   }
 
   addTodo(text) {
@@ -17,6 +19,12 @@ export default class App {
       text,
     };
     this.todoItems.push(new TodoItem(data));
+
+    this.render();
+  }
+
+  render(){
+    this.todoList.render(this.todoItems);
   }
 
 }

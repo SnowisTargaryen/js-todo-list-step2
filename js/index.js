@@ -7,4 +7,4 @@ const onUserCreateHandler = () => {
 const userCreateButton = document.querySelector('.user-create-button')
 userCreateButton.addEventListener('click', onUserCreateHandler)
 
-new App;
+new App();
