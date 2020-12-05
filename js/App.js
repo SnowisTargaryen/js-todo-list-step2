@@ -9,15 +9,12 @@ export default class App {
     this.todoId = 0;
 
     this.todoList = new TodoList();
+    this.userList = new UserList();
+
     new TodoInput({
       addTodo: this.addTodo.bind(this),
     });
 
-    this.userList = new UserList();
-  }
-
-  render(){
-    this.todoList.render(this.todoItems);
   }
 
   addTodo(text) {
@@ -28,5 +25,9 @@ export default class App {
     this.todoItems.push(new TodoItem(data));
 
     this.render();
+  }
+
+  render(){
+    this.todoList.render(this.todoItems);
   }
 }

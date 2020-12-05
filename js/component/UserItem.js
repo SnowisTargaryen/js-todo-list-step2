@@ -1,11 +1,16 @@
 export default class UserItem {
-  constructor(name) {
+  constructor({id, name}) {
+    this.id = id;
     this.name = name;
   }
 
   render() {
     return `
-      <button class="ripple">${this.name}</button>
+      <button data-id="${this.id}" class="ripple">${this.name}</button>
     `;
+  }
+
+  handleUserSelect(e){
+    console.log(e);
   }
 }
