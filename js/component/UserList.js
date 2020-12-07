@@ -4,32 +4,16 @@ import UserItem from "./UserItem.js";
 export default class UserList {
   constructor() {
     this.$list = document.querySelector('#user-list');
-    this.users = [];
-    this.userId = 0;
-    this.setEvent();
-
-
-    this.userInput = new UserInput({
-      addUser: this.addUser.bind(this),
-    });
-  }
-
-  render(userItem){
-    const userList = userItem.map(user => user.render()).join("");
-    this.$list.innerHTML = userList;
-    this.$list.insertAdjacentElement("beforeend", this.userInput.render());
     this.setEvent();
   }
 
-  addUser(name) {
-    if (!name) return;
-
-    const data = {
-      id: this.userId++,
-      name,
-    };
-    this.users.push(new UserItem(data));
-    this.render(this.users);
+  render(userItems){
+    const userList = userItems.map(user => user.render()).join("");
+    let $span = document.createElement("span");
+    $span.innerHTML = userList;
+    this.$list.querySelector("span") === null ? "" : this.$list.querySelector("span").remove();
+    this.$list.prepend($span);
+    this.setEvent();
   }
 
   setEvent(){
