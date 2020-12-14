@@ -1,7 +1,7 @@
 export default class UserItem {
-  constructor({id, name}) {
-    this.id = id;
-    this.name = name;
+  constructor(item) {
+    this.id = item._id;
+    this.name = item.name;
   }
 
   render() {

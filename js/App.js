@@ -1,9 +1,7 @@
-import TodoInput from "./component/TodoInput.js";
-import TodoItem from "./component/TodoItem.js"
-import TodoList from "./component/TodoList.js";
 import UserList from "./component/UserList.js";
 import UserInput from "./component/UserInput.js";
 import UserItem from "./component/UserItem.js";
+import API from "/js/util/API.js";
 
 export default class App {
   constructor() {
@@ -11,10 +9,10 @@ export default class App {
     this.usersItems = [];
     this.userId = 0;
     this.userList = new UserList();
-
     new UserInput({
       addUser: this.addUser.bind(this),
     });
+
   }
 
   addUser(name) {

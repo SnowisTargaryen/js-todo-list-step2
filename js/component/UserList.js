@@ -1,12 +1,15 @@
-import UserInput from "./UserInput.js";
-import UserItem from "./UserItem.js";
 import TodoList from "./TodoList.js";
 import TodoItem from "./TodoItem.js";
 import TodoInput from "./TodoInput.js";
+import API from "/js/util/API.js";
+import UserItem from "./UserItem.js";
+
 
 export default class UserList {
   constructor() {
     this.$list = document.querySelector('#user-list');
+    this.api = new API();
+    this.api.getUsersTodos().then(value => this.render(value));
 
     this.todoItems = [];
     this.todoId = 0;
@@ -25,7 +28,10 @@ export default class UserList {
   }
 
   render(userItems){
-    const userList = userItems.map(user => user.render()).join("");
+    const userList = userItems
+        .map(value => new UserItem(value))
+        .map(user => user.render()).join("");
+
     let $span = document.createElement("span");
     $span.innerHTML = userList;
     this.$list.querySelector("span") === null ? "" : this.$list.querySelector("span").remove();
