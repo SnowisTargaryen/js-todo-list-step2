@@ -7,15 +7,9 @@ import UserItem from "./component/UserItem.js";
 
 export default class App {
   constructor() {
-    this.todoItems = [];
-    this.todoId = 0;
 
     this.usersItems = [];
     this.userId = 0;
-
-    this.todoList = new TodoList();
-
-
     this.userList = new UserList();
 
     new UserInput({
@@ -34,18 +28,7 @@ export default class App {
     this.render(this.usersItems);
   }
 
-  addTodo(text) {
-    const data = {
-      id: this.todoId++,
-      text,
-    };
-    this.todoItems.push(new TodoItem(data));
-
-    this.render();
-  }
-
   render(){
     this.userList.render(this.usersItems)
-    // this.todoList.render(this.todoItems);
   }
 }

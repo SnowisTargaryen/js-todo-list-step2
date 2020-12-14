@@ -1,7 +1,9 @@
 export default class TodoItem{
-    constructor({id, text}){
-      this.id = id;
-      this.text = text;
+    constructor({id, contents, priority, isCompleted}) {
+        this.id = id;
+        this.contents = contents;
+        this.priority = priority;
+        this.isCompleted = isCompleted;
     }
 
     render() {
@@ -15,11 +17,11 @@ export default class TodoItem{
                 <option value="1">1순위</option>
                 <option value="2">2순위</option>
               </select>
-              ${this.text}
+              ${this.contents}
             </label>
             <button class="destroy"></button>
           </div>
-          <input class="edit" value="${this.text}" />
+          <input class="edit" value="${this.contents}" />
         </li>
         `
     }
