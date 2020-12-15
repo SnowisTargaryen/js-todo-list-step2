@@ -9,5 +9,4 @@ export default class UserItem {
       <button data-id="${this.id}" class="ripple">${this.name}</button>
     `;
   }
-
 }
